@@ -3,7 +3,7 @@ return {
   lazy = true,
   cmd = { "CyberdreamLoad" },
   opts = {
-    transparent = false,
+    -- transparent = true,
     -- italic_comments = true,
     -- terminal_colors = true,
   },

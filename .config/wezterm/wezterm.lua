@@ -60,6 +60,7 @@ end)
 -- ===== Fontes e Cores =====
 config.font_size = 10
 config.font = wezterm.font_with_fallback({
+    "IoskeleyMono Nerd Font",
 	"JetBrainsMono Nerd Font",
 	"Terminess Nerd Font Mono",
 	"BlexMono Nerd Font Mono",
@@ -101,35 +102,36 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	config.window_decorations = "RESIZE"
 	config.initial_rows = 35
 	config.initial_cols = 120
+	config.default_prog = { "powershell.exe", "-NoLogo" }
 
 	-- config.window_background_image = nil
 
-	local candidates = {
-		"C:\\Program Files\\Git\\usr\\bin\\bash.exe",
-		"C:\\Program Files\\Git\\bin\\bash.exe",
-		"C:\\Program Files (x86)\\Git\\usr\\bin\\bash.exe",
-		"C:\\Program Files (x86)\\Git\\bin\\bash.exe",
-	}
-
-	local shell
-	for _, p in ipairs(candidates) do
-		if file_exists(p) then
-			shell = p
-			break
-		end
-	end
-
-	if not shell then
-		config.default_prog = { "powershell.exe", "-NoLogo" }
-	else
-		if shell:match("git%-bash%.exe$") then
-			config.default_prog = { shell }
-		else
-			config.default_prog = { shell, "--login", "-i" }
-		end
-	end
-
-	config.default_cwd = os.getenv("USERPROFILE") or "C:\\"
+	-- local candidates = {
+	-- 	"C:\\Program Files\\Git\\usr\\bin\\bash.exe",
+	-- 	"C:\\Program Files\\Git\\bin\\bash.exe",
+	-- 	"C:\\Program Files (x86)\\Git\\usr\\bin\\bash.exe",
+	-- 	"C:\\Program Files (x86)\\Git\\bin\\bash.exe",
+	-- }
+	--
+	-- local shell
+	-- for _, p in ipairs(candidates) do
+	-- 	if file_exists(p) then
+	-- 		shell = p
+	-- 		break
+	-- 	end
+	-- end
+	--
+	-- if not shell then
+	-- 	config.default_prog = { "powershell.exe", "-NoLogo" }
+	-- else
+	-- 	if shell:match("git%-bash%.exe$") then
+	-- 		config.default_prog = { shell }
+	-- 	else
+	-- 		config.default_prog = { shell, "--login", "-i" }
+	-- 	end
+	-- end
+	--
+	-- config.default_cwd = os.getenv("USERPROFILE") or "C:\\"
 end
 
 return config

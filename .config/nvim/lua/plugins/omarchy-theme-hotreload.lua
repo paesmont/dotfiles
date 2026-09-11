@@ -1,3 +1,9 @@
+-- On win32 the omarchy theme loader is disabled: no hotreload, no theme
+-- override. The theme configured natively in lazy.lua is honored instead.
+if vim.fn.has("win32") == 1 then
+  return {}
+end
+
 return {
 	{
 		name = "theme-hotreload",

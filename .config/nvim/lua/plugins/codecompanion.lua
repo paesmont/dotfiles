@@ -14,17 +14,34 @@ return {
     opts = {
       language = "Portuguese",
     },
+    -- Configurar adapters ACP
+    adapters = {
+      acp = {
+        opencode = function()
+          return require("codecompanion.adapters").extend("opencode", {
+            -- Configurações do OpenCode ACP
+            defaults = {
+              timeout = 30000, -- 30 segundos para respostas complexas
+            },
+          })
+        end,
+      },
+    },
+    -- Configurar interações
     interactions = {
       chat = {
-        adapter = "opencode",
+        adapter = {
+          name = "opencode",
+          -- model = "opencode/big-pickle",  -- Opcional: modelo específico
+        },
       },
       cli = {
         agent = "opencode",
         agents = {
           opencode = {
             cmd = "opencode",
-            args = {},
-            description = "OpenCode CLI",
+            args = { "acp" },  -- Usar ACP mode
+            description = "OpenCode CLI (ACP)",
             provider = "terminal",
           },
         },

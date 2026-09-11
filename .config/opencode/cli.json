@@ -1,5 +1,26 @@
 {
   "theme": {
-    "name": "system"
+    "name": "opencode"
+  },
+  "animations": true,
+  "session": {
+    "sidebar": "auto",
+    "terminal": true,
+    "scrollbar": true,
+    "thinking": "hide",
+    "grouping": "auto"
+  },
+  "tabs": {
+    "layout": "horizontal",
+    "indicators": "status"
+  },
+  "diffs": {
+    "view": "auto"
+  },
+  "attention": {
+    "enabled": true
+  },
+  "terminal": {
+    "title": true
   }
 }
